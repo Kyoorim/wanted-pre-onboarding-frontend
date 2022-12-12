@@ -7,6 +7,20 @@ export const Wrapper = styled.div`
 	align-items: center;
 	width: 100vw;
 	height: 100vh;
+	h1 {
+		font-size: 2rem;
+		font-weight: 700;
+		padding: 30px 0px;
+	}
+
+	a {
+		padding: 30px 0px;
+		font-size: 0.8rem;
+	}
+	a:hover {
+		text-decoration: underline;
+		cursor: pointer;
+	}
 `;
 
 export const Form = styled.form`

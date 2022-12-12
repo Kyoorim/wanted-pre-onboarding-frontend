@@ -16,6 +16,11 @@ export const Container = styled.div`
 	align-items: center;
 	width: 500px;
 	max-width: 100%;
+	h1 {
+		font-size: 2rem;
+		font-weight: 700;
+		padding: 30px 0px;
+	}
 `;
 
 export const ButtonContainer = styled.div`
