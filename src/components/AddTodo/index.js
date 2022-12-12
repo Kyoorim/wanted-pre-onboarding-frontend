@@ -1,35 +1,34 @@
-import { useRef } from 'react';
-import { apiService } from '../../apis';
+import * as S from './style';
+import { useState } from 'react';
 import Button from '../Layout/Button';
 
-const AddTodo = () => {
-	const todoRef = useRef('');
+const AddTodo = ({ onAddTodo }) => {
+	const [todo, setTodo] = useState('');
+
+	const onChange = (event) => {
+		setTodo(event.target.value);
+	};
 
 	const submitHandler = async (event) => {
 		event.preventDefault();
-
-		const todo = {
-			todo: todoRef.current.value,
+		const todoForm = {
+			todo,
 			isCompleted: false,
 		};
 
-		const enteredTodoIsValid = String(todo.text).trim() !== '';
-
-		let formIsValid = false;
-		if (enteredTodoIsValid) formIsValid = true;
-		if (!formIsValid) return;
-
-		await apiService.postTodos(todo);
+		onAddTodo(todoForm);
+		setTodo('');
 	};
+
 	return (
-		<form onSubmit={submitHandler}>
-			<input
+		<S.Form onSubmit={submitHandler}>
+			<S.Input
 				type="text"
 				placeholder="오늘의 할 일을 입력하세요"
-				ref={todoRef}
+				onChange={onChange}
 			/>
 			<Button type="submit">제출</Button>
-		</form>
+		</S.Form>
 	);
 };
 

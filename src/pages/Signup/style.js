@@ -7,6 +7,11 @@ export const Wrapper = styled.div`
 	align-items: center;
 	width: 100vw;
 	height: 100vh;
+	h1 {
+		font-size: 2rem;
+		font-weight: 700;
+		padding: 30px 0px;
+	}
 `;
 
 export const Form = styled.form`

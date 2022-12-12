@@ -46,7 +46,7 @@ const Signin = () => {
 					<Button>로그인하기</Button>
 				</S.ButtonContainer>
 			</S.Form>
-			<a>회원가입 하러가기</a>
+			<a onClick={() => navigate('/auth/signup')}>회원가입 하러가기</a>
 		</S.Wrapper>
 	);
 };

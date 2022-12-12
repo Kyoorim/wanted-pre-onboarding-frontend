@@ -9,7 +9,7 @@ export const SignUp = async (form) => {
 		const response = await axios.post('/auth/signup', form, {
 			withCredentials: true,
 		});
-		console.log(response);
+		alert('회원가입 성공');
 		return response;
 	} catch (err) {
 		alert(err);
@@ -23,7 +23,6 @@ export const SignIn = async (form) => {
 		});
 		const token = response.data.access_token;
 		localStorage.setItem('token', token);
-		console.log(response);
 		return response;
 	} catch (err) {
 		alert(err);
@@ -31,34 +30,41 @@ export const SignIn = async (form) => {
 };
 
 export const getTodos = async () => {
-	try {
-		const response = await axios.get('/todos');
-		console.log(response);
-		return response;
-	} catch (err) {
-		alert(err);
-	}
-};
-
-export const postTodos = async (todo) => {
 	const access_token = localStorage.getItem('token');
 	try {
-		const response = await axios.post('/todos', todo, {
+		const response = await axios.get('/todos', {
 			headers: {
 				Authorization: `Bearer ${access_token}`,
 			},
 		});
-		console.log(response);
 		return response;
 	} catch (err) {
 		alert(err);
 	}
 };
 
-export const upDateTodos = async (id) => {
+export const postTodos = async (todoForm) => {
+	const access_token = localStorage.getItem('token');
 	try {
-		const response = await axios.put('todos/:id');
-		console.log(response);
+		const response = await axios.post('/todos', todoForm, {
+			headers: {
+				Authorization: `Bearer ${access_token}`,
+			},
+		});
+		return response;
+	} catch (err) {
+		alert(err);
+	}
+};
+
+export const upDateTodos = async (updateForm, id) => {
+	const access_token = localStorage.getItem('token');
+	try {
+		const response = await axios.put(`/todos/${id}`, updateForm, {
+			headers: {
+				Authorization: `Bearer ${access_token}`,
+			},
+		});
 		return response;
 	} catch (err) {
 		alert(err);
@@ -66,9 +72,13 @@ export const upDateTodos = async (id) => {
 };
 
 export const deleteTodos = async (id) => {
+	const access_token = localStorage.getItem('token');
 	try {
-		const response = await axios.delete('todos/:id');
-		console.log(response);
+		const response = await axios.delete(`/todos/${id}`, {
+			headers: {
+				Authorization: `Bearer ${access_token}`,
+			},
+		});
 		return response;
 	} catch (err) {
 		alert(err);

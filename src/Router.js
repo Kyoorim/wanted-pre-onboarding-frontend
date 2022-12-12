@@ -5,14 +5,16 @@ import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import TodoList from './pages/TodoList';
 
-export default function Router() {
+export default function Router({ isLoggedIn }) {
 	return (
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/auth/signin" element={<Signin />} />
-				<Route path="/auth/signup" element={<Signup />} />
-				<Route path="/todos" element={<TodoList />} />
+				{!isLoggedIn && <Route path="/auth/signin" element={<Signin />} />}
+				{!isLoggedIn && <Route path="/auth/signup" element={<Signup />} />}
+				{isLoggedIn && <Route path="/todos" element={<TodoList />} />}
+
+				<Route path="*" element={<Home />} />
 			</Routes>
 		</BrowserRouter>
 	);

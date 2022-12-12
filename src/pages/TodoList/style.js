@@ -21,4 +21,14 @@ export const Container = styled.div`
 		font-weight: 700;
 		padding: 30px 0px;
 	}
+	h3 {
+		text-align: end;
+		width: 90%;
+		text-decoration: underline;
+		font-size: 0.8rem;
+	}
+	ul {
+		width: 90%;
+		margin-top: 30px;
+	}
 `;
