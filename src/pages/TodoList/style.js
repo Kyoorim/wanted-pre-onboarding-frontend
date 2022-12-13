@@ -26,6 +26,9 @@ export const Container = styled.div`
 		width: 90%;
 		text-decoration: underline;
 		font-size: 0.8rem;
+		:hover {
+			cursor: pointer;
+		}
 	}
 	ul {
 		width: 90%;
